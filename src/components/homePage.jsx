@@ -11,16 +11,18 @@ export const HomePage = () =>{
       if( localStorage.getItem('user') !== null) {
            navigate('/')
            localStorage.clear()
-      }else if ( localStorage.getItem('user') === null && window.location.href === "http://localhost:3000/home"){
-        navigate('/')
       }
     }
 
     useEffect(()=>{
+      
         const check = () => {
-        if ( localStorage.getItem('user') === null && window.location.href === "http://localhost:3000/home"){
+          let homeCheck = window.location.href.split("/")
+        if ( localStorage.getItem('user') === null && homeCheck[3] === "home"){
         navigate('/')
       } 
+
+     
     }
 
     check()
